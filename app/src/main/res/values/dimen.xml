@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--一つ一つのリストの大きさを決める-->
+    <dimen name="card_item_margin">5dp</dimen>
+    <dimen name="card_item_height">96dp</dimen>
+
+    <!--Scriptについて-->
+    <dimen name="text_size_title">@dimen/text_size_large</dimen>
+    <dimen name="text_size_content">@dimen/text_size_midium</dimen>
+
+    <!--textsizeについて-->
+    <dimen name="text_size_large">22dp</dimen>
+    <dimen name="text_size_midium">16dp</dimen>
+
+
+</resources>
