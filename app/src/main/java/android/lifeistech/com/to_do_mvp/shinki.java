@@ -38,24 +38,13 @@ public class shinki extends AppCompatActivity {
         String titleText = titleEditText.getText().toString();
         String contentText = contentEditText.getText().toString();
 
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("key_title",titleText);
-        editor.putString("key_content",contentText);
-        editor.commit();
-        finish();
 
         Intent intent = new Intent(this,MainActivity.class);
         intent.putExtra("titleText",titleText);
+        intent.putExtra("contentText",contentText);
         startActivity(intent);
 
-
-
     }
-
-
-
-
-
 
 
 }

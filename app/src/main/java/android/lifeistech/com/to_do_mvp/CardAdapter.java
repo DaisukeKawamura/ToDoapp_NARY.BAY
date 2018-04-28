@@ -11,64 +11,61 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kawamuradaisuke on 2018/04/24.
  */
 
-/*【大まかな流れ】1,Cardのインスタンスたくさん作って、List<Card>にまとめておく
-2,List<Card>とListViewをつなげるためにCardAdapterを使う*/
-//イメージとしてはCardAdapterは大きい船みたいな感覚
-
-
 
 public class CardAdapter extends ArrayAdapter<Card> {
-    List<Card> arrayList;
+    List<Card> mCards;
 
 
 
-    CardAdapter(Context context, int layoutResourceId, List<Card> objects){
-        super(context, layoutResourceId, objects);
+    public CardAdapter(Context context, int layoutResourceId, List<Card> object){
+        super(context, layoutResourceId, object);
 
-        arrayList = objects;
+        mCards = object;
     }
 
     @Override
     public int getCount(){
-        return arrayList.size();
+        return mCards.size();
     }
 
 
     @Override
     public Card getItem(int position){
-        return arrayList.get(position);
+        return mCards.get(position);
     }
 
-    public static class Viewholder{
 
-        TextView titleText;
-        CheckBox checkBox;
 
-        public Viewholder(View view) {
-            titleText = (TextView)view.findViewById(R.id.textView);
-            checkBox = (CheckBox)view.findViewById(R.id.checkBox);
-        }
+//    public static class Viewholder{
+//
+//        TextView titleText;
+//        CheckBox checkBox;
+//
+//        public Viewholder(View view) {
+//            titleText = (TextView)view.findViewById(R.id.textView);
+//            checkBox = (CheckBox)view.findViewById(R.id.checkBox);
+//        }
 
 
 
     @Override
     public View getView( int position, View convertView, final ViewGroup parent){
 
-
-        final Viewholder viewholder;
+//        final Viewholder viewholder;
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.card, null);
-            viewholder = new Viewholder(convertView);
-            convertView.setTag(viewholder);
-        } else{
-            viewholder = (Viewholder) convertView.getTag();
+//            viewholder = new Viewholder(convertView);
+//            convertView.setTag(viewholder);
+//        } else{
+//            viewholder = (Viewholder) convertView.getTag();　　　
         }
 
         final Card item =getItem(position);
@@ -77,6 +74,7 @@ public class CardAdapter extends ArrayAdapter<Card> {
         if (item != null){
            final TextView textView = (TextView)convertView.findViewById(R.id.textView);
            textView.setText(item.titleText);
+           textView.setText(item.getTitleText());
 
            final CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
 
